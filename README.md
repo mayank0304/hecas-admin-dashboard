@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HECAS Admin Panel
 
-## Getting Started
+A simple admin dashboard for monitoring IoT devices with analytics and location tracking.
 
-First, run the development server:
+## Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Configure environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Add your API endpoints and admin password:
+   ```env
+   NEXT_API_DEVICES=https://your-api.amazonaws.com/devices
+   NEXT_API_TODAY_STATS=https://your-api.amazonaws.com/today-stats
+   NEXT_API_WEEKLY_STATS=https://your-api.amazonaws.com/weekly-stats
+   ADMIN_PASSWORD=your_secure_password_here
+   ```
+
+3. **Run development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+   
+   Enter the admin password when prompted (default: `admin`)
+
+## Password Protection
+
+The admin panel has simple password protection. 
+
+Set your password in the `.env` file:
+```env
+ADMIN_PASSWORD=your_secure_password_here
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If no password is set in the environment, it defaults to `admin`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Once you enter the correct password, you get full access to the admin panel until you close the browser tab.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+Set environment variables in your deployment platform.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Device listing and monitoring
+- Real-time analytics dashboard
+- Location tracking with address resolution
+- Weekly statistics and trends
+- Responsive design
+- Simple password protection
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with Next.js, TypeScript, and Tailwind CSS.
