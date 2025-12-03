@@ -4,7 +4,6 @@ export async function POST(request: NextRequest) {
   try {
     const { password } = await request.json();
 
-    // Get admin password from environment variable (server-side only)
     const ADMIN_PASSWORD = process.env.NEXT_AUTH_PASS;
 
     if (password === ADMIN_PASSWORD) {
