@@ -1,66 +1,47 @@
-# HECAS Admin Panel
+# HECAS - Hybrid Edge Computing Analytics System
+## Admin Portal
 
-A simple admin dashboard for monitoring IoT devices with analytics and location tracking.
+This is the admin dashboard for HECAS (Hybrid Edge Computing Analytics System), a cloud computing lab project that demonstrates a complete IoT data pipeline and analytics system.
 
-## Setup
+## Project Overview
 
-1. **Install dependencies**
-   ```bash
-   npm install
-   ```
+HECAS is a comprehensive system for collecting and analyzing GPS location data from mobile devices:
 
-2. **Configure environment variables**
-   ```bash
-   cp .env.example .env.local
-   ```
-   
-   Add your API endpoints and admin password:
-   ```env
-   NEXT_API_DEVICES=https://your-api.amazonaws.com/devices
-   NEXT_API_TODAY_STATS=https://your-api.amazonaws.com/today-stats
-   NEXT_API_WEEKLY_STATS=https://your-api.amazonaws.com/weekly-stats
-   ADMIN_PASSWORD=your_secure_password_here
-   ```
+- **Mobile App** (Expo/React Native) - Collects GPS coordinates from user devices
+- **Cloud Infrastructure** (AWS) - Processes and stores data using Lambda, API Gateway, and DynamoDB
+- **Admin Portal** (This Project) - Web dashboard for monitoring and analytics
 
-3. **Run development server**
-   ```bash
-   npm run dev
-   ```
+## System Architecture
 
-4. **Open browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-   
-   Enter the admin password when prompted (default: `admin`)
-
-## Password Protection
-
-The admin panel has simple password protection. 
-
-Set your password in the `.env` file:
-```env
-ADMIN_PASSWORD=your_secure_password_here
+```
+Mobile App → AWS API Gateway → AWS Lambda → DynamoDB
+                                              ↓
+                                        Admin Portal
 ```
 
-If no password is set in the environment, it defaults to `admin`.
+## Tech Stack
 
-Once you enter the correct password, you get full access to the admin panel until you close the browser tab.
-
-## Deployment
-
-```bash
-npm run build
-npm start
-```
-
-Set environment variables in your deployment platform.
+- **Next.js 16** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS 4** - Modern styling
+- **Lucide React** - Professional icons
+- **AWS Integration** - API Gateway endpoints for data retrieval
 
 ## Features
 
-- Device listing and monitoring
-- Real-time analytics dashboard
-- Location tracking with address resolution
-- Weekly statistics and trends
-- Responsive design
-- Simple password protection
+- **Device Management** - View all connected mobile devices
+- **Real-time Analytics** - Today's distance traveled, speed metrics, and data points
+- **Location Intelligence** - GPS coordinates converted to readable addresses
+- **Weekly Statistics** - Visual trends and progress tracking
+- **Responsive Design** - Works on desktop, tablet, and mobile
+- **Admin Authentication** - Simple password protection
 
-Built with Next.js, TypeScript, and Tailwind CSS.
+## Data Flow
+
+1. Mobile app collects GPS coordinates
+2. Data sent to AWS API Gateway
+3. AWS Lambda processes the data
+4. Processed data stored in DynamoDB
+5. Admin portal retrieves data for visualization and analytics
+
+Built with Next.js, TypeScript, and Tailwind CSS for a Cloud Computing Lab project.
