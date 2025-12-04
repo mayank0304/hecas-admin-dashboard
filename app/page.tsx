@@ -2,6 +2,10 @@ import Link from "next/link";
 import { fetchDevices } from "@/lib/api";
 import { BarChart3, MapPin, TrendingUp, Smartphone } from "lucide-react";
 
+// Force dynamic rendering and disable caching
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function HomePage() {
   const devices = await fetchDevices();
 
